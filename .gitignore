@@ -1,0 +1,20 @@
+#myenv klasörü
+myenv
+# Derleme sonuçları
+bin/
+obj/
+
+# Geçici dosyalar
+*.tmp
+*.bak
+
+# Visual Studio proje dosyaları
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
