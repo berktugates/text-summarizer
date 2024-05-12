@@ -80,7 +80,7 @@ def spacy_summarizer(docx):
                     if sent not in sentence_scores.keys():
                         sentence_scores[sent] = freqTable[word]
                     else:
-                        sentence_scores[sent] += freqTable[word]#total number of length of words
+                        sentence_scores[sent] += freqTable[word]    #Toplam kelime uzunluğuu    
 
     import heapq
     summary_sentences = heapq.nlargest(8, sentence_scores, key=sentence_scores.get)
@@ -107,9 +107,10 @@ def main():
     if choice == 'Summarize Via Text':
         st.subheader("NLP kullanarak metin özetleme işlemi yapınız.")
         article_text = st.text_area("Metni giriniz","Buraya yazınız")
-        #cleaning of input text
+        
+        #Temizleme işlemi
         article_text = re.sub(r'\\[[0-9]*\\]', ' ',article_text)
-        article_text = re.sub('[^a-zA-ZçğİÇĞŞşÖÜöüıİ.,]', ' ', article_text)
+        article_text = re.sub('[^a-zA-ZçğİÇĞŞşÖÜöüıİ.,]', ' ', article_text) #regular expression işlemi
         article_text = re.sub(r"\b[a-zA-Z]\b",'',article_text)
         article_text = re.sub("[A-Z]\Z",'',article_text)
         article_text = re.sub(r'\s+', ' ', article_text)
