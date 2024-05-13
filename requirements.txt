@@ -1,0 +1,5 @@
+nltk==3.8.1
+streamlit==1.34.0
+spacy==3.7.4
+spacy-legacy==3.0.12
+spacy-loggers==1.0.5

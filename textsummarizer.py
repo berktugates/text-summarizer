@@ -1,4 +1,4 @@
-import re
+import re #regex işlemleri için
 import streamlit as st #gui tasarımı için
 import nltk
 import webbrowser
@@ -11,7 +11,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 
-#SPACY import
+#SPACY paketleri
 import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
 
@@ -43,7 +43,7 @@ def nltk_summarizer(docx):
                     if sent not in sentence_scores.keys():
                         sentence_scores[sent] = freqTable[word]
                     else:
-                        sentence_scores[sent] += freqTable[word] #total number of length of words
+                        sentence_scores[sent] += freqTable[word] #toplamm kelime uzunluğu
 
     import heapq
     summary_sentences = heapq.nlargest(8, sentence_scores, key=sentence_scores.get)
