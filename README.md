@@ -4,12 +4,6 @@ Bu uygulama, metin özetleme işlemi için Python'da kullanılan popüler kütü
 
 ## Kullanılan Kütüphaneler
 
-* **spaCy**: Açık kaynaklı bir Python kütüphanesidir. SpaCy, ileri düzey doğal dil işleme (NLP) ve makine öğrenmesi görevlerinde kullanılır. Bu uygulamada bilgi çıkarma, doğal dil anlama sistemleri oluşturmak ve derin öğrenme için metin ön işleme yapmak için kullanılacaktır. Ayrıca parçacık etiketleme, bağımlılık ayrıştırma ve adlı varlık tanıma gibi görevlerde derin öğrenme iş akışlarını destekler.
-##### Kurulum
-```bash
-pip3 install spacy
-```
-
 * **NLTK**: Natural Language Toolkit (NLTK), istatistiksel doğal dil işleme (NLP) uygulamalarında insan dili verileriyle çalışan Python programları oluşturmak için kullanılan bir platformdur. Metin işleme, ayıklama, ayrıştırma, sınıflandırma, köke dönüştürme, etiketleme ve anlamsal akıl yürütme gibi görevler için kütüphaneler içerir.
 
 ##### Kurulum
