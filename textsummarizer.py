@@ -2,12 +2,13 @@ import re
 import streamlit as st
 import nltk
 import webbrowser
+from rouge_score import rouge_scorer
+
 nltk.download('stopwords')
 nltk.download('punkt')
 
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
-
 
 # Function for NLTK Summarization
 def nltk_summarizer(docx):
@@ -43,6 +44,12 @@ def nltk_summarizer(docx):
     summary = ' '.join(summary_sentences)
     return summary
 
+# Function to evaluate summary with ROUGE metrics
+def evaluate_summary(reference_summary, generated_summary):
+    scorer = rouge_scorer.RougeScorer(['rouge1', 'rouge2', 'rougeL'], use_stemmer=True)
+    scores = scorer.score(reference_summary, generated_summary)
+    return scores
+
 def main():
     st.title("Metin Özetleme Uygulaması")
     st.subheader("created by: Berktug Berke Ates")
@@ -64,6 +71,7 @@ def main():
         st.subheader("NLP kullanarak metin özetleme işlemi yapınız.")
         
         article_text = st.text_area("Metni giriniz", height=300)
+        reference_summary = st.text_area("İsteğe bağlı: Referans Özeti giriniz", height=100)
         
         # Temizleme işlemi
         article_text = re.sub(r'\\[[0-9]*\\]', ' ', article_text)
@@ -76,8 +84,15 @@ def main():
         if st.button("Metin Yoluyla Özetle"):
             if summary_choice == 'NLTK':
                 summary_result = nltk_summarizer(article_text)
+                st.write("Oluşturulan Özet:")
+                st.write(summary_result)
 
-            st.write(summary_result)
+                if reference_summary:
+                    scores = evaluate_summary(reference_summary, summary_result)
+                    st.write("ROUGE Skorları:")
+                    st.write(f"ROUGE-1: {scores['rouge1']}")
+                    st.write(f"ROUGE-2: {scores['rouge2']}")
+                    st.write(f"ROUGE-L: {scores['rougeL']}")
 
 if __name__ == '__main__':
     main()
